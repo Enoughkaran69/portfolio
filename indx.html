@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KARMINDED | Tech Creator</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #1E2E12;
+      color: #1E2E12;
+      overflow-x: hidden;
+      padding: 20px;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: #FBFF85;
+      border-radius: 24px;
+      padding: 60px 50px;
+      min-height: 450px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      margin-bottom: 40px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: rgba(30, 46, 18, 0.03);
+      border-radius: 50%;
+      animation: float 20s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(-30px, 30px) rotate(180deg); }
+    }
+
+    .brand {
+      font-size: clamp(56px, 10vw, 120px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 0.9;
+      color: #1E2E12;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: slideUp 1s ease-out 0.2s forwards;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .subtitle {
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-weight: 600;
+      color: #1E2E12;
+      opacity: 0;
+      animation: slideUp 1s ease-out 0.4s forwards;
+      max-width: 600px;
+      line-height: 1.5;
+    }
+
+    .tagline {
+      margin-top: 16px;
+      font-size: clamp(14px, 2vw, 16px);
+      color: #1E2E12;
+      opacity: 0;
+      animation: slideUp 1s ease-out 0.6s forwards;
+      max-width: 500px;
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    .navigation {
+      background: #1E2E12;
+      backdrop-filter: blur(10px);
+      border-radius: 2px;
+      padding: 18px 30px;
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      align-items: center;
+      position: sticky;
+      top: 0.5px;
+      z-index: 100;
+      
+      margin-bottom: 60px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 15px;
+      position: relative;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: #1E2E12;
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Content Cards */
+    .section {
+      background: white;
+      border-radius: 24px;
+      padding: 50px;
+      margin-bottom: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section:nth-child(2) { animation-delay: 0.1s; }
+    .section:nth-child(3) { animation-delay: 0.2s; }
+    .section:nth-child(4) { animation-delay: 0.3s; }
+    .section:nth-child(5) { animation-delay: 0.4s; }
+
+    .section-title {
+      font-size: clamp(32px, 5vw, 42px);
+      font-weight: 800;
+      color: #1E2E12;
+      margin-bottom: 24px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: #FBFF85;
+      border-radius: 2px;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .about-text {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #333;
+    }
+
+    .about-text strong {
+      color: #1E2E12;
+      font-weight: 700;
+    }
+
+    .about-details {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .detail-item {
+      background: rgba(251, 255, 133, 0.15);
+      padding: 20px;
+      border-radius: 16px;
+      border-left: 4px solid #FBFF85;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #555;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .detail-item:hover {
+      transform: translateX(8px);
+      box-shadow: 0 8px 20px rgba(251, 255, 133, 0.3);
+    }
+
+    /* Social Icons */
+    .socials {
+      display: flex;
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .social-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #1E2E12;
+      color: #FBFF85;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .social-icon:hover {
+      transform: translateY(-4px) scale(1.1);
+      box-shadow: 0 12px 24px rgba(251, 255, 133, 0.4);
+      background: #2A4018;
+    }
+
+    /* Video Section */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      margin-top: 30px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .video-container:hover {
+      transform: scale(1.02);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .video-label {
+      display: inline-block;
+      background: #FBFF85;
+      color: #1E2E12;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    /* Works Grid */
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .work-card {
+      background: rgba(251, 255, 133, 0.1);
+      border-radius: 20px;
+      padding: 30px;
+      border: 2px solid rgba(251, 255, 133, 0.3);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .work-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(251, 255, 133, 0.2);
+      border-color: #FBFF85;
+    }
+
+    .work-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1E2E12;
+      margin-bottom: 12px;
+    }
+
+    .work-desc {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* Contact */
+    .contact-text {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #333;
+      max-width: 600px;
+    }
+
+    .contact-email {
+      display: inline-block;
+      background: #1E2E12;
+      color: #FBFF85;
+      padding: 16px 32px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 24px;
+      transition: all 0.3s ease;
+    }
+
+    .contact-email:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(30, 46, 18, 0.4);
+      background: #2A4018;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      body {
+        padding: 12px;
+      }
+
+      .hero {
+        padding: 40px 30px;
+        min-height: 380px;
+      }
+
+      .navigation {
+        gap: 20px;
+        padding: 14px 20px;
+      }
+
+      .section {
+        padding: 30px 24px;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .works-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <h1 class="brand">KARMINDED</h1>
+    <p class="subtitle">Tech YouTuber • Developer • Creator</p>
+    <p class="tagline">Building practical projects, sharing real code, and documenting the journey in public.</p>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navigation">
+    <a href="#about" class="nav-link">About</a>
+    <a href="#works" class="nav-link">Works</a>
+    <a href="#video" class="nav-link">Videos</a>
+    <a href="#contact" class="nav-link">Contact</a>
+  </nav>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-content">
+      <div>
+        <p class="about-text">
+          Hi, I'm <strong>Karan</strong> — a tech creator passionate about building real-world applications and sharing knowledge through YouTube. I focus on practical coding tutorials, automation tools, and projects that solve actual problems.
+        </p>
+        <p class="about-text" style="margin-top: 20px;">
+          My content bridges the gap between theory and practice, helping developers learn by building alongside me. From web apps to AI tools, I document everything openly.
+        </p>
+        <div class="socials">
+          <a href="https://youtube.com/@karminded" target="_blank" class="social-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.515 6.816l4.704 2.487-4.704 2.488v-4.975z"/></svg></a>
+          <a href="https://www.instagram.com/karminded/" target="_blank" class="social-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.204-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.069-4.85.069-3.204 0-3.584-.012-4.849-.069-3.225-.149-4.771-1.664-4.919-4.919-.058-1.265-.069-1.645-.069-4.849 0-3.204.012-3.584.069-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.073 4.948.073 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a href="https://github.com/Enoughkaran69" target="_blank" class="social-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.835 2.809 1.305 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.197-6.091 8.197-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+        </div>
+      </div>
+      <div class="about-details">
+        <div class="detail-item">
+          <strong>🎥 Content Creator</strong><br>
+          Creating educational tech content that simplifies complex topics and inspires developers worldwide.
+        </div>
+        <div class="detail-item">
+          <strong>💻 Full-Stack Developer</strong><br>
+          Building production-ready applications with modern frameworks and best practices.
+        </div>
+        <div class="detail-item">
+          <strong>🚀 Learning in Public</strong><br>
+          Sharing failures, wins, and everything in between to help others grow faster.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Works Section -->
+  <section id="works" class="section">
+    <h2 class="section-title">Featured Works</h2>
+    <div class="works-grid">
+      <div class="work-card">
+        <h3 class="work-title">Web Applications</h3>
+        <p class="work-desc">Full-stack projects built with React, Node.js, and modern databases. Real-world apps solving practical problems.</p>
+      </div>
+      <div class="work-card">
+        <h3 class="work-title">Youtube Content</h3>
+        <p class="work-desc">Cinematic storytelling through tech tutorials and project documentation.</p>
+      </div>
+      <div class="work-card">
+        <h3 class="work-title">AI Tools</h3>
+        <p class="work-desc">Machine learning models and AI-powered applications leveraging the latest in artificial intelligence.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Section -->
+  <section id="video" class="section">
+    <h2 class="section-title">Latest Content</h2>
+    <span class="video-label">📺 Latest Upload</span>
+    <div class="video-container">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/RFViLjKimVI?si=kJ61Zq4tubg2PGud" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <h2 class="section-title">Let's Connect</h2>
+    <p class="contact-text">
+      Open to collaborations, project discussions, and connecting with fellow creators and developers. Whether you have a project idea, need help with something, or just want to chat about tech — reach out!
+    </p>
+    <a href="mailto:hello@karminded.com" class="contact-email">Get in Touch</a>
+  </section>
+
+</body>
+</html>
