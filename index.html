@@ -606,22 +606,22 @@
     <div class="section-card">
       <div class="items-grid">
         <div class="item-card">
-          <video src="video/v1.MP4" class="item-image" autoplay muted loop playsinline></video>
+          <video src="video/v6.MP4" class="item-image" autoplay muted loop playsinline></video>
           <h3>CODEMANIA</h3>
           <p>Media Editor</p>
         </div>
         <div class="item-card">
-          <video src="video/v2.MP4" class="item-image" autoplay muted loop playsinline></video>
+          <video src="video/v5.MP4" class="item-image" autoplay muted loop playsinline></video>
           <h3>AWS SBG</h3>
           <p>Podcast Editor</p>
         </div>
         <div class="item-card">
-          <video src="video/v3.MP4 " class="item-image" autoplay muted loop playsinline></video>
+          <video src="video/v1.MP4 " class="item-image" autoplay muted loop playsinline></video>
           <h3>SHARDA WORK</h3>
           <p>Exploration Editor</p>
         </div>
         <div class="item-card">
-          <video src="video/v5.MP4" class="item-image" autoplay muted loop playsinline></video>
+          <video src="video/v8.MP4" class="item-image" autoplay muted loop playsinline></video>
           <h3>MOTION DESIGN</h3>
           <p>Motion Graphics Editor</p>
         </div>
@@ -662,22 +662,22 @@
     <div class="section-card">
       <div class="items-grid">
         <div class="item-card">
-          <video src="video/v1.MP4" class="item-image" autoplay muted loop playsinline></video>
+          <video src="video/v3.MP4" class="item-image" autoplay muted loop playsinline></video>
           <h3>HACKATHON MEDIA EDITOR</h3>
           <p>Edited highlight reels and promo videos for codemania, turning raw hackathon footage into polished stories that captured the energy of the event.</p>
         </div>
         <div class="item-card">
-          <video src="video/v2.MP4" class="item-image" autoplay muted loop playsinline></video>
+          <video src="video/v4.MP4" class="item-image" autoplay muted loop playsinline></video>
           <h3>FREELANCE FOR YOUTUBER</h3>
           <p>Handled end-to-end editing and motion graphics for a content creator's channel, helping boost watch time and engagement through dynamic pacing and visuals.</p>
         </div>
         <div class="item-card">
-          <video src="video/v3.MP4" class="item-image" autoplay muted loop playsinline></video>
+          <video src="video/v7.MP4" class="item-image" autoplay muted loop playsinline></video>
           <h3>SOCIAL MEDIA MANAGER</h3>
           <p>Planned and edited short-form content across platforms, blending strong visuals with strategy to grow reach and keep audiences engaged.</p>
         </div>
         <div class="item-card">
-          <video src="video/v4.MP4" class="item-image" autoplay muted loop playsinline></video>
+          <video src="video/v2.MP4" class="item-image" autoplay muted loop playsinline></video>
           <h3>CONTENT CREATOR</h3>
           <p>Behind-the-scenes stories from shoots, edits, and everything in between — a look into the creative process that shapes each project.</p>
         </div>
@@ -759,6 +759,18 @@
           index = (index + 1) % items.length;
           update(index);
         }, 5000);
+      });
+    })();
+
+    // Open linked video when a Projects or Experience item is clicked
+    (function(){
+      const linkURL = "https://drive.google.com/drive/folders/1UUX4AuAae7dJAnsts-Onb8NxZ8y93-A_";
+      const cards = document.querySelectorAll('#projects .item-card, #diary .item-card');
+      cards.forEach(card => {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', () => {
+          window.open(linkURL, '_blank', 'noopener');
+        });
       });
     })();
 
